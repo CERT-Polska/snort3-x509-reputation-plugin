@@ -1,23 +1,23 @@
 #About:
 x509rep is an ips_option extension to Snort++ (tested on snort-3.0.0-a3 version).  It allows users to verify certificates sent using the SSL protocol in four different ways:
-1. by comparing the lowest level certificate fingerprint with a fingerprint white-list.
-2. by comparing the lowest level certificate fingerprint with fingerprint black-list.
-3. by verifying the certificate using trusted certificates saved in a particular folder. 
-4. by verifying the certificate using untrusted certificates saved in a particular folder. 
+-	by comparing the lowest level certificate fingerprint with a fingerprint white-list.
+-	by comparing the lowest level certificate fingerprint with fingerprint black-list.
+-	by verifying the certificate using trusted certificates saved in a particular folder. 
+-	by verifying the certificate using untrusted certificates saved in a particular folder. 
 
 ##Available options:
--	black_list_path [<black-list path>]: Path to the black-list fingerprints file. \n 
--	white_list_path [<white-list path>]: Path to the white-list fingerprints file
--	trusted_CA_path [< trusted CA path>]: Path to the trusted CA directory
--	untrusted_CA_path [< untrusted CA path>]: Path to the untrusted CA directory
--	white_fingerprint [< white fingerprint>]: Add a single fingerprint to white-list. Can be used multiple times. 
--	black_fingerprint [< black fingerprint>]: Add a single fingerprint to black-list. Can be used multiple times. 
+-	black_list_path [< black-list path >]: Path to the black-list fingerprints file. \n 
+-	white_list_path [< white-list path >]: Path to the white-list fingerprints file
+-	trusted_CA_path [< trusted CA path >]: Path to the trusted CA directory
+-	untrusted_CA_path [< untrusted CA path >]: Path to the untrusted CA directory
+-	white_fingerprint [< white fingerprint >]: Add a single fingerprint to white-list. Can be used multiple times. 
+-	black_fingerprint [< black fingerprint >]: Add a single fingerprint to black-list. Can be used multiple times. 
 -	black_list_disable : Disable checking black-list
 -	white_list_disable : Disable checking white-list
 -	trusted_CA_disable : Disable verifying the certificate with certificates from the trusted CA directory. 
 -	untrusted_CA_disable : Disable verifying certificate with certificates from the untrusted CA directory. 
--	logfile [<logfile>]:- Save information about alarm type, time, subject DN, issuer DN to file. 
--	save_cert [<logdir>]: Save suspicious certificates to folder
+-	logfile [< logfile >]:- Save information about alarm type, time, subject DN, issuer DN to file. 
+-	save_cert [< logdir >]: Save suspicious certificates to folder
 -	full_chain_verify – use all certificate chain during CA verification (works for trusted and untrusted CA option) . By default extension uses only the lowest level certificate. 
 
 ##Example rules:
@@ -26,9 +26,9 @@ All example rules are available in x509rep.rules file.
 
 ##Fingerprint format
 
--	X509rep uses Secure Hash Algorithm 1 (SHA1).  Fingerprint lists should contain one fingerprint per line in the following format:
--	XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX
--	where X represents an upper-case letter or single digit. You can find an example white-list in snort_conf/example_lists directory.
+X509rep uses Secure Hash Algorithm 1 (SHA1).  Fingerprint lists should contain one fingerprint per line in the following format:
+XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX
+where X represents an upper-case letter or single digit. You can find an example white-list in snort_conf/example_lists directory.
 
 Single fingerprint in snort rule can use upper-case and lower-case letters without colon in between. 
 
