@@ -1,0 +1,4 @@
+snort_path="/opt/snort"
+export LUA_PATH=$snort_path/include/snort/lua/\?.lua\;\;
+export SNORT_LUA_PATH=$snort_path/etc/snort/
+

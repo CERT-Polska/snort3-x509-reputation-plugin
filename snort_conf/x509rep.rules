@@ -1,0 +1,12 @@
+alert tcp any any -> any any ( msg:"x509rep - snort alert"; x509rep: white_list_path ./snort_conf/example_lists/white_list , logfile test_log ; sid:11; rev:1;)
+alert tcp any any -> any any ( msg:"x509rep - snort alert"; x509rep: white_list_path ./snort_conf/example_lists/white_list , black_fingerprint A04EAFB348C26B15A8C1AA87A333CAA3CDEEC9C9, black_fingerprint 87F5BABBD897C579B66AF52FD8638B99BD1CE826,logfile test_log ; sid:12;  rev:1;)
+alert tcp any any -> any any ( msg:"x509rep - snort alert"; x509rep: black_list_path ./snort_conf/example_lists/black_list , white_list_path ./snort_conf/example_lists/white_list ,  black_fingerprint A04EAFB348C26B15A8C1AA87A333CAA3CDEEC9C9, white_fingerprint 87F5BABBD897C579B66AF52FD8638B99BD1CE826,logfile test_log ; sid:13;  rev:1;)
+alert tcp any any -> any any ( msg:"x509rep - snort alert"; x509rep: black_list_path ./snort_conf/example_lists/black_list , white_list_path ./snort_conf/example_lists/white_list ,  black_fingerprint A04EAFB348C26B15A8C1AA87A333CAA3CDEEC9C9, white_fingerprint 87F5BABBD897C579B66AF52FD8638B99BD1CE826,logfile test_log, black_list_disable ; sid:14;  rev:1;)
+alert tcp any any -> any any ( msg:"x509rep - snort alert"; x509rep: black_list_path ./snort_conf/example_lists/black_list , white_list_path ./snort_conf/example_lists/white_list , white_fingerprint 87F5BABBD897C579B66AF52FD8638B99BD1CE826,logfile test_log, white_list_disable; sid:15;  rev:1;)
+alert tcp any any -> any any ( msg:"x509rep - snort alert"; x509rep: untrusted_CA_path U_CA , white_list_path ./snort_conf/example_lists/white_list , white_fingerprint 87F5BABBD897C579B66AF52FD8638B99BD1CE826,logfile test_log, white_list_disable; sid:16;  rev:1;)
+alert tcp any any -> any any ( msg:"x509rep - snort alert"; x509rep: untrusted_CA_path U_CA , trusted_CA_path CA , white_list_path ./snort_conf/example_lists/white_list , white_fingerprint 87F5BABBD897C579B66AF52FD8638B99BD1CE826,logfile test_log, white_list_disable; sid:17;  rev:1;)
+alert tcp any any -> any any ( msg:"x509rep - snort alert"; x509rep: untrusted_CA_path U_CA , trusted_CA_path CA , white_list_path ./snort_conf/example_lists/white_list , white_fingerprint 87F5BABBD897C579B66AF52FD8638B99BD1CE826,logfile test_log, white_list_disable, trusted_CA_disable; sid:18;  rev:1;)
+alert tcp any any -> any any ( msg:"x509rep - snort alert"; x509rep: untrusted_CA_path U_CA , trusted_CA_path CA , white_list_path ./snort_conf/example_lists/white_list,logfile test_log, save_cert cert_file; sid:19;  rev:1;)
+
+
+
