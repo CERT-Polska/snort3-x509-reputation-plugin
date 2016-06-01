@@ -1,7 +1,7 @@
 #About:
-x509rep is an ips_option extension to Snort++ (tested on snort-3.0.0-a3 version).  It allows users to verify certificates sent using the SSL protocol in four different ways:
--	by comparing the lowest level certificate fingerprint with a fingerprint white-list.
--	by comparing the lowest level certificate fingerprint with fingerprint black-list.
+x509rep is an ips_option extension to Snort++ (tested on snort-3.0.0-a3 version).  It allows users to verify the lowest level certificates sent using the SSL protocol in four different ways:
+-	by comparing certificate fingerprint with a fingerprint white-list.
+-	by comparing certificate fingerprint with fingerprint black-list.
 -	by verifying the certificate using trusted certificates saved in a particular folder. 
 -	by verifying the certificate using untrusted certificates saved in a particular folder. 
 
@@ -18,7 +18,6 @@ x509rep is an ips_option extension to Snort++ (tested on snort-3.0.0-a3 version)
 -	untrusted_CA_disable : Disable verifying certificate with certificates from the untrusted CA directory. 
 -	logfile [< logfile >]:- Save information about alarm type, time, subject DN, issuer DN to file. 
 -	save_cert [< logdir >]: Save suspicious certificates to folder
--	full_chain_verify – use all certificate chain during CA verification (works for trusted and untrusted CA option) . By default extension uses only the lowest level certificate. 
 
 ##Example rules:
 
