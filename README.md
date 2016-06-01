@@ -17,7 +17,9 @@ x509rep is an ips_option extension to Snort++ (tested on snort-3.0.0-a3 version)
 -	trusted_CA_disable : Disable verifying the certificate with certificates from the trusted CA directory. 
 -	untrusted_CA_disable : Disable verifying certificate with certificates from the untrusted CA directory. 
 -	logfile [< logfile >]:- Save information about alarm type, time, subject DN, issuer DN to file. 
--	save_cert [< logdir >]: Save suspicious certificates to folder
+-	save_cert [< logdir >]: Save suspicious certificates to folder.
+
+*Current depth for the certificate chain verification is 1. 
 
 ##Example rules:
 
