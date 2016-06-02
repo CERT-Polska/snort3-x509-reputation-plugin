@@ -21,6 +21,7 @@
 #include <string>
 #include <string.h>
 #include <vector>
+#include <fstream>
 
 #include "log/messages.h"
 #include "x509rep_conf.h"
@@ -306,7 +307,17 @@ int x509Rep_config::check_session_config()
     if( black_list_disable and white_list_disable and trusted_CA_disable and untrusted_CA_disable)
     {
         FatalError("There is no active checklist. All lists (BlackList, WhiteList, TrustedCA, UntrustedCA) are disable \n");
-        return 0;
+    }
+
+    if(save_cert_path!=NULL)
+    {
+        fstream file;
+        file.open(save_cert_path, ios::out);
+        if(!file)
+        {
+            FatalError("Can't open file %s \n", save_cert_path);
+        }
+        file.close();
     }
 
     return 1;

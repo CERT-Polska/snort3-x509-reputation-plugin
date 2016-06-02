@@ -1,4 +1,5 @@
-#About:
+# x509 Reputation - beta version 
+##About:
 x509rep is an ips_option extension to Snort++ (tested on snort-3.0.0-a3 version).  It allows users to verify the lowest level certificates sent using the SSL protocol in four different ways:
 -	by comparing certificate fingerprint with a fingerprint white-list.
 -	by comparing certificate fingerprint with fingerprint black-list.

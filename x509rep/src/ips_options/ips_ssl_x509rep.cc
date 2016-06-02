@@ -101,7 +101,7 @@ x509RepOption::x509RepOption(x509Rep_config * session_config) : IpsOption(s_name
         file.open(logfile_path, ios::out);
         if(!file)
         {
-            FatalError("Can't open file %s", session_config->get_logfile());
+            FatalError("Can't open file %s \n", logfile_path);
         }
     }
     delete [] logfile_path;
