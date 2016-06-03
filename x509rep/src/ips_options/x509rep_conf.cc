@@ -307,18 +307,47 @@ int x509Rep_config::check_session_config()
     if( black_list_disable and white_list_disable and trusted_CA_disable and untrusted_CA_disable)
     {
         FatalError("There is no active checklist. All lists (BlackList, WhiteList, TrustedCA, UntrustedCA) are disable \n");
+        return 0;
     }
 
-    if(save_cert_path!=NULL)
-    {
-        fstream file;
-        file.open(save_cert_path, ios::out);
-        if(!file)
-        {
-            FatalError("Can't open file %s \n", save_cert_path);
-        }
-        file.close();
-    }
+    check_path_to_file_read(black_list_path);
+    check_path_to_file_read(white_list_path);
+    check_path_to_file_read(trusted_CA_path);
+    check_path_to_file_read(untrusted_CA_path);
+
+    //check_path_to_file_save(save_cert_path);
 
     return 1;
 }
+
+
+int x509Rep_config::check_path_to_file_save(char * path)
+{
+    if(path!=NULL)
+    {
+        fstream file;
+        file.open(path, ios::out);
+        if(!file)
+        {
+            FatalError("Can't open file %s \n", path);
+        }
+        file.close();
+    }
+    return 0;
+}
+
+int x509Rep_config::check_path_to_file_read(char * path)
+{
+    if(path!=NULL)
+    {
+        fstream file;
+        file.open(path, ios::in);
+        if(!file)
+        {
+            FatalError("Can't open file %s \n", path);
+        }
+        file.close();
+    }
+    return 0;
+}
+

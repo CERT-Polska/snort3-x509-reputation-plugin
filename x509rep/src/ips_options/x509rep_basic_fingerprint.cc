@@ -93,7 +93,7 @@ void BasicFingerprintContener::get_fingerprints_from_vector(vector<string> my_ve
         fingerprint="";
         if(my_vector[i].size()!=SHA1_LEN*2)
         {
-            FatalError("Incorrect fingerprint length ");
+            FatalError("Incorrect fingerprint length : %s \n",my_vector[i].c_str());
         }
 
         transform(my_vector[i].begin(), my_vector[i].end(), my_vector[i].begin(), ::toupper);

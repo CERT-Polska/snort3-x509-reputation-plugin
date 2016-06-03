@@ -120,7 +120,6 @@ x509RepOption::~x509RepOption()
 int x509RepOption::eval(Cursor&, Packet* p)
 {
     Profile profile(x509RepPerfStats);
-
     if ( !(p->packet_flags & PKT_REBUILT_STREAM) && !p->is_full_pdu() )
         return DETECTION_OPTION_NO_MATCH;
 
@@ -128,7 +127,6 @@ int x509RepOption::eval(Cursor&, Packet* p)
         return DETECTION_OPTION_NO_MATCH;
 
     ssl_decoder->init(p);
-
     if(ssl_decoder->is_certificate())
     {
         x509_chain_object->set_chain(ssl_decoder->get_certificate_vector());
@@ -187,6 +185,7 @@ void x509RepOption::save_data_to_file(Packet_info *packet_info, string single_fi
     char* log_file_path = session_config->get_logfile();
     if(log_file_path!=NULL)
     {
+        //file<<"[ "<<detection_name<<" ] "<<"  [ FINGERPRINT ] "<<single_fingerprint<<"\n";
         file<<"[ "<<detection_name<<" ] "<<"[ TIME ] "<<packet_info->get_time_info()<<"  [ FINGERPRINT ] "<<single_fingerprint<<"  [ Subject DN ] "<<subject_DN<<" [ Issuer DN ] "<<issuer_DN<<"\n";
         file.flush();
     }

@@ -40,7 +40,6 @@ SSLBasicDecoder::~SSLBasicDecoder()
 int SSLBasicDecoder::init(Packet* p)
 {
     this->p=p;
-
     cert_buffer.clear();
     SSL_decode_with_cert(p->data, (int)p->dsize, p->packet_flags, 0, NULL, NULL, 0, all_certificates, all_data);
     if(all_certificates.size()>0)
@@ -66,15 +65,12 @@ int SSLBasicDecoder::decode_cert_string(string all_certificates)
     int16_t single_cert_len;
     string single_cert_data="";
     int current_position=7;
-
     while(current_position<all_certyficats_len)
     {
         int mark_number=0;
-
         single_cert_len = ((unsigned char)all_certificates[current_position]<<16) | ((unsigned char)all_certificates[current_position+1]<<8) | ((unsigned char)all_certificates[current_position+2]);
 
         current_position+=3;
-
         for(single_cert_len; single_cert_len>0; single_cert_len--)
         {
             single_cert_data+=all_certificates[current_position];
@@ -82,7 +78,6 @@ int SSLBasicDecoder::decode_cert_string(string all_certificates)
             mark_number++;
             current_position++;
         }
-
         cert_buffer.push_back(single_cert_data);
         single_cert_data="";
     }

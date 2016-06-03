@@ -88,6 +88,10 @@ public:
     char* get_save_cert_path();
 
     int clean_up();
+    int check_path_to_file_save(char * path);
+    int check_path_to_file_read(char * path);
+
+
 };
 
 #endif
